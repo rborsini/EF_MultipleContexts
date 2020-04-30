@@ -5,19 +5,18 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E485BD70-94C1-42EE-9EB1-1D885998C795}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>MultipleContexts_Console</RootNamespace>
-    <AssemblyName>MultipleContexts_Console</AssemblyName>
+    <ProjectGuid>{CD6279E3-89E4-4C68-9AA5-5ADBF2BB90EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MultipleContexts_Teacher</RootNamespace>
+    <AssemblyName>MultipleContexts_Teacher</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -27,7 +26,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -53,22 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Migrations\202004301420547_Initial.cs" />
+    <Compile Include="Migrations\202004301420547_Initial.designer.cs">
+      <DependentUpon>202004301420547_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MyTeacherContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Teacher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MultipleContexts_Student\MultipleContexts_Student.csproj">
-      <Project>{AB05603C-F7F8-4D62-AD60-095E8B07D11E}</Project>
-      <Name>MultipleContexts_Student</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MultipleContexts_Teacher\MultipleContexts_Teacher.csproj">
-      <Project>{CD6279E3-89E4-4C68-9AA5-5ADBF2BB90EF}</Project>
-      <Name>MultipleContexts_Teacher</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\202004301420547_Initial.resx">
+      <DependentUpon>202004301420547_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
